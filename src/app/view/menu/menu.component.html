@@ -1,0 +1,48 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <style>
+  #ip1 {
+      -moz-border-radius: 15px;
+      border-radius: 15px;
+      border: solid 1px blue;
+      padding: 5px;
+    }
+  </style>
+  <meta charset="utf-8" />
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <b>Project Manager</b>
+      </a>
+    </div>
+  </div>
+ <nav class="navbar navbar-default">
+   <ul class="nav nav-pills"  role="tablist">
+          <li class="nav-item"><a class="nav-link"  data-toggle="pill" [routerLink]="['userAdd']">
+        <b>Add User</b></a></li>
+      <li class="nav-item"><a class="nav-link"  data-toggle="pill" [routerLink]="['userView']">
+        <b>View User</b></a></li>
+      <li class="nav-item"><a class="nav-link"  data-toggle="pill" [routerLink]="['add-project']">
+        <b>Add Project</b></a></li>
+      <li class="nav-item"><a class="nav-link"  data-toggle="pill" [routerLink]="['view-project']">
+        <b>View Project</b></a> </li>
+      <li class="nav-item"><a class="nav-link"  data-toggle="pill" [routerLink]="['add-task']">
+       <b>Add Task</b> </a></li>
+      <li class="nav-item"><a class="nav-link"  data-toggle="pill" [routerLink]="['view-task']">
+       <b>View Task</b> </a></li>
+    </ul>
+  </nav>
+</body>
+
+</html>

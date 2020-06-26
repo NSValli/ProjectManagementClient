@@ -1,0 +1,37 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row" align="left" >
+      <div class="col-md-6 offset-md-3">
+          <div><h2>Add User</h2> </div>
+          <form [formGroup]="UserAddForm" (ngSubmit)="onSubmit()">
+          <div class="form-group" >
+              <label>First Name:</label>
+              <input type="text" formControlName="FirstName" class="form-control" [ngClass]="{'is-invalid':submitted && f.FirstName.errors}"/>
+              <div *ngIf="submitted && f.FirstName.errors" class="invalid-feedback">
+                <div *ngIf="f.FirstName.errors.required">FirstName is required                </div>
+              </div>
+          </div>
+          <div class="form-group" >
+              <label>Last Name:</label>
+              <input type="text" formControlName="LastName" class="form-control" [ngClass]="{'is-invalid':submitted && f.LastName.errors}"/>
+              <div *ngIf="submitted && f.LastName.errors" class="invalid-feedback">
+                <div *ngIf="f.LastName.errors.required">LastName is required   </div>
+              </div>
+          </div>
+          <div class="form-group" >
+              <label>Employee ID:</label>
+              <input type="text" formControlName="EmployeeID" class="form-control" [ngClass]="{'is-invalid':submitted && f.EmployeeID.errors}"/>
+              <div *ngIf="submitted && f.EmployeeID.errors" class="invalid-feedback">
+                <div *ngIf="f.EmployeeID.errors.required">EmployeeID is required   </div>
+              </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary float-right" type="button" (click)="ResetUserDetails()">Reset</button>
+            <button class="btn btn-primary float-right" style="margin-right: 20px;" >Add</button>
+          </div>
+          <app-modal-popup></app-modal-popup>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

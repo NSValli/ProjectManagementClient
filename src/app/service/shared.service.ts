@@ -4,6 +4,8 @@ import {HttpClient} from "@angular/common/http";
 import {map} from 'rxjs/operators';
 
 import {User} from 'src/app/model/user';
+import {Project} from 'src/app/model/project';
+
 import {PipeFilter} from 'src/app/pipe.filter';
 
 @Injectable({
@@ -43,5 +45,34 @@ import {PipeFilter} from 'src/app/pipe.filter';
       return this.http.delete(this.url+`RemoveUser/${id}`).pipe(map((res:Response)=>res))
     }
     //Services for user ends here
+
+
+    //Project Services - Start
+    GetAllProject():Observable<any>
+    {
+      return this.http.get(this.url+"Project/GetAll").pipe(map((res:Response)=>res))
+    }
+
+    GetProjectById(id:number):Observable<any>
+    {
+      return this.http.get(this.url+`Project/Get/${id}`).pipe(map((res:Response)=>res))
+    }
+
+    AddProject(item:Project):Observable<any>
+    {
+      return this.http.post(this.url+"AddProject",item).pipe(map((res:Response)=>res))
+    }
+
+    UpdateProject(id:number,item:Project):Observable<any>
+    {
+      item.ProjectID=id;
+      return this.http.put(this.url+"EditProject",item).pipe(map((res:Response)=>res))
+    }
+
+    DeleteProject(id:number):Observable<any>
+    {
+      return this.http.delete(this.url+`RemoveProject/${id}`).pipe(map((res:Response)=>res))
+    }
+    //Project Services - End
 
   }

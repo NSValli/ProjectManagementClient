@@ -17,6 +17,9 @@ import {SharedService} from 'src/app/service/shared.service';
 import {PipeFilter} from 'src/app/pipe.filter'
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import {DatePipe} from '@angular/common';
+import { UserEditComponent } from './view/user-edit/user-edit.component';
+import { ProjectEditComponent } from './view/project-edit/project-edit.component';
+import { TaskEditComponent } from './view/task-edit/task-edit.component';
 
 //import { routes } from './app-routing.module';
 
@@ -31,7 +34,10 @@ import {DatePipe} from '@angular/common';
     TaskViewComponent,
     MenuComponent,
     ModalPopupComponent,
-    PipeFilter
+    PipeFilter,
+    UserEditComponent,
+    ProjectEditComponent,
+    TaskEditComponent
   ],
   imports: [
     BrowserModule,

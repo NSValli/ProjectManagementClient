@@ -1,0 +1,75 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row" align="left" >
+      <div class="col-md-6 offset-md-3">
+        <h2>Update Task</h2>
+        <form [formGroup]="TaskEditForm" (ngSubmit)="onSubmit()">
+          <div class="form-group" >
+            <label>Project:</label>
+            <select class="form-control" formControlName="ProjectId" style="height:100%" [(ngModel)] = "selectedProject">
+              <option *ngFor="let item of projectDetails"
+               class="form-control" [ngValue] = "item" >
+                {{item.ProjectName}}
+              </option>
+            </select>
+          </div>
+          <div class="form-group" >
+              <label>Task:</label>
+              <input type="text" formControlName="TaskName" class="form-control"
+              [(ngModel)]="task.TaskName"/>
+          </div>
+          <div class="form-group" >
+            <label>ParentTask:</label>
+            <select class="form-control" formControlName="ParentId"
+            style="height:100%" [(ngModel)] = "selectedParent">
+              <option *ngFor="let item of parentTaskDetails"  [ngValue] = "item" class="form-control" >
+                {{item.TaskName}}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group" >
+            <label>Priority:</label>
+            <input type="range" min="1" max="5" step="1"  formControlName="Priority"
+            [(ngModel)]="task.Priority" class="form-control" [ngClass]="{'is-invalid':submitted && f.Priority.errors}"/>
+            <div *ngIf="submitted && f.Priority.errors?.min" class="invalid-feedback">
+                Please change the Priority
+            </div>
+         </div>
+         <div class="form-group" >
+            <label>Start Date:</label>
+            <input type="date" formControlName="StartDate" class="form-control"
+            [ngModel]="task.StartDate | date:'yyyy-MM-dd'"
+            (ngModelChange)="task.StartDate = $event"
+            />
+            &nbsp;
+            <label>End Date:</label>
+            <input type="date" formControlName="EndDate" class="form-control"
+            (ngModelChange)="task.EndDate = $event"
+            [ngModel]="task.EndDate | date:'yyyy-MM-dd'"
+            />
+          </div>
+
+          <div class="form-group" >
+            <label>User:</label>
+            <select class="form-control" formControlName="UserId" style="height:100%"
+            [(ngModel)] = "selectedUser">
+              <option *ngFor="let item of userDetails" class="form-control" [ngValue] = "item">
+                {{item.FirstName + " " +  item.LastName}}
+              </option>
+            </select>
+          </div>
+          <div class="form-group" >
+            <label>Status:</label>
+            <input type="text" formControlName="Status" class="form-control" [(ngModel)]="task.Status" />
+          </div>
+          <div class="form-group">
+              <button class="btn btn-primary float-right" type="button" (click)="Cancel()">Cancel</button>
+              <button class="btn btn-primary float-right" style="margin-right: 20px;">Update</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<app-modal-popup></app-modal-popup>

@@ -1,0 +1,39 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row" align="left" >
+      <div class="col-md-6 offset-md-3">
+        <h2>Update Project</h2>
+
+        <form [formGroup]="ProjectEditForm" (ngSubmit)="onSubmit()">
+          <div class="form-group" >
+              <label>Project:</label>
+              <input type="text" formControlName="ProjectName" class="form-control" [(ngModel)]="projectDetail.ProjectName" />
+          </div>
+          <div class="form-group" >
+              <input type="checkbox" formControlName="Ischeck" />
+              <label>Set Start and EndDate:</label>
+          </div>
+          <div class="form-group" >
+              <label>Start Date:</label>
+              <input type="datetime" formControlName="StartDate" class="form-control" [(ngModel)]="projectDetail.StartDate" />
+          </div>
+          <div class="form-group" >
+              <label>End Date:</label>
+              <input type="datetime" formControlName="EndDate" class="form-control" [(ngModel)]="projectDetail.EndDate">
+          </div>
+          <div class="form-group" >
+              <input type="range" min="1" max="5" step="1"  formControlName="Priority"
+               class="form-control" [ngClass]="{'is-invalid':submitted && f.Priority.errors}"/>
+              <div *ngIf="submitted && f.Priority.errors" class="invalid-feedback">
+                <div *ngIf="f.Priority.errors.required">Please change the Priority bar</div>
+              </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary float-right" type="button" (click)="Cancel()">Cancel</button>
+            <button class="btn btn-primary float-right" style="margin-right: 20px;">Update</button>
+          </div>
+      </form>
+    </div>
+    </div>
+    </div>
+  </div>

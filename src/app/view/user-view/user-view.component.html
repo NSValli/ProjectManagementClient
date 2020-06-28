@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr  *ngFor="let item of sortedUserArray | filter:'FirstName' : searchTerm; let i=index">
+      <tr  *ngFor="let item of userList | filter:'FirstName' : searchTerm; let i=index">
         <td>{{item.UserID}}</td>
         <td>{{item.FirstName}}</td>
         <td>{{item.LastName}}</td>

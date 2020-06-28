@@ -23,6 +23,7 @@ export class UserViewComponent implements OnInit {
   title: string;
   sortType: string;
   sortDirection: string;
+  attribute: string;
 
   constructor(private shared: SharedService, private router: Router) {
     this.getData();
@@ -53,14 +54,42 @@ export class UserViewComponent implements OnInit {
       });
   }
 
-  public get sortedUserArray(): User[] {
+
+  public sortfn(att) {
+    this.attribute = att;
+    this.userList = this.sortedUserArray();
+  }
+  
+  public sortedUserArray(): User[] {
+    //alert("Hi");
+    if(this.userList == null || this.userList.length <= 0) {
+      console.log("User list is empty");
+    //  alert(this.attribute);
+      return;
+    }
     if (this.sortType === "desc") {
       this.sortType = "asc";
-      return this.userList.reverse();
+      if(this.attribute === "id") {
+        return this.userList.sort((a,b) => b.EmployeeID.localeCompare(a.EmployeeID));
+      }
+      if(this.attribute === "first") {
+        return this.userList.sort((a,b) => b.FirstName.localeCompare(a.FirstName));
+      }
+      if(this.attribute === "last") {
+  //      return this.userList.sort((a,b) => b.LastName.localeCompare(a.LastName));
+      }
     }
     else {
       this.sortType = "desc";
-      return this.userList.sort();
+      if(this.attribute === "id") {
+        return this.userList.sort((a,b) => a.EmployeeID.localeCompare(b.EmployeeID));
+      }
+      if(this.attribute === "first") {
+        return this.userList.sort((a,b) => a.FirstName.localeCompare(b.FirstName));
+      }
+      if(this.attribute === "last") {
+  //      return this.userList.sort((a,b) => a.LastName.localeCompare(b.LastName));
+      }
     }
   }
 

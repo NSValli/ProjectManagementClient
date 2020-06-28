@@ -5,7 +5,8 @@ import {map} from 'rxjs/operators';
 
 import {User} from 'src/app/model/user';
 import {Project} from 'src/app/model/project';
-
+import {Task} from 'src/app/model/task';
+import {ParentTask} from 'src/app/model/parenttask';
 import {PipeFilter} from 'src/app/pipe.filter';
 
 @Injectable({
@@ -74,5 +75,41 @@ import {PipeFilter} from 'src/app/pipe.filter';
       return this.http.delete(this.url+`RemoveProject/${id}`).pipe(map((res:Response)=>res))
     }
     //Project Services - End
+
+
+    //Task Services - Start
+    GetAllTask():Observable<any>
+    {
+        return this.http.get(this.url+"Task/GetAll").pipe(map((response:Response)=>response))
+    }
+
+    GetTask(id:number):Observable<any>
+    {
+        return this.http.get(this.url+`Task/Get/${id}`).pipe(map((response:Response)=>response))
+    }
+
+    AddTask(item:Task):Observable<any>
+    {
+        return this.http.post(this.url+"AddTask",item).pipe(map((response:Response)=>response))
+    }
+
+    UpdateTask(taskID:number,item:Task):Observable<any>
+    {
+        item.TaskId=taskID;
+        return this.http.put(this.url+"EditTask",item).pipe(map((response:Response)=>response))
+    }
+    //Task Services  - End
+
+    //Parent Task Services - Start
+    GetAllParentTask():Observable<any>
+    {
+        return this.http.get(this.url+"ParentTask/GetAll").pipe(map((res:Response)=>res))
+    }
+
+    AddParentTask(item:ParentTask):Observable<any>
+    {
+        return this.http.post(this.url+"AddParentTask",item).pipe(map((res:Response)=>res))
+    }
+    //Parent Task Services - End
 
   }

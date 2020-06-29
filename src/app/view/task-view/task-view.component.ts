@@ -41,7 +41,7 @@ export class TaskViewComponent implements OnInit {
   }
 
   editTask(id) {
-    this.router.navigate(["update-task"], { queryParams: { TaskID: id } });
+    this.router.navigate(["taskedit"], { queryParams: { TaskID: id } });
   }
 
   endTask(id) {

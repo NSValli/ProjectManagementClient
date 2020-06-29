@@ -38,7 +38,7 @@ export class ProjectViewComponent implements OnInit {
 
   btnUpdateClick(id)
   {
-   this.router.navigate(["projectupdate"],{queryParams:{ProjectID:id}});
+   this.router.navigate(["projectedit"],{queryParams:{ProjectID:id}});
   }
 
   btnSuspendClick(projId)

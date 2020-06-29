@@ -37,7 +37,7 @@ export class UserViewComponent implements OnInit {
   }
 
   btnEditUserClick(id) {
-    this.router.navigate(["userUpdate"], { queryParams: { UserID: id } });
+    this.router.navigate(["useredit"], { queryParams: { UserID: id } });
   }
 
   btnDeleteUserClick(id) {
@@ -69,6 +69,9 @@ export class UserViewComponent implements OnInit {
     }
     if (this.sortType === "desc") {
       this.sortType = "asc";
+      if(this.attribute === "uid") {
+        return this.userList.sort((a,b) => b.UserID - a.UserID);
+      }
       if(this.attribute === "id") {
         return this.userList.sort((a,b) => b.EmployeeID.localeCompare(a.EmployeeID));
       }
@@ -76,11 +79,14 @@ export class UserViewComponent implements OnInit {
         return this.userList.sort((a,b) => b.FirstName.localeCompare(a.FirstName));
       }
       if(this.attribute === "last") {
-  //      return this.userList.sort((a,b) => b.LastName.localeCompare(a.LastName));
+        return this.userList.sort((a,b) => b.LastName.localeCompare(a.LastName));
       }
     }
     else {
       this.sortType = "desc";
+      if(this.attribute === "uid") {
+        return this.userList.sort((a,b) => a.UserID-b.UserID);
+      }
       if(this.attribute === "id") {
         return this.userList.sort((a,b) => a.EmployeeID.localeCompare(b.EmployeeID));
       }
@@ -88,7 +94,7 @@ export class UserViewComponent implements OnInit {
         return this.userList.sort((a,b) => a.FirstName.localeCompare(b.FirstName));
       }
       if(this.attribute === "last") {
-  //      return this.userList.sort((a,b) => a.LastName.localeCompare(b.LastName));
+        return this.userList.sort((a,b) => a.LastName.localeCompare(b.LastName));
       }
     }
   }

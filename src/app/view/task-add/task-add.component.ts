@@ -71,7 +71,7 @@ export class TaskAddComponent implements OnInit {
         .subscribe(
           data => {
             this.showMsg = true;
-            this.router.navigate(["view-task"]);
+            this.router.navigate(["taskview"]);
           },
           error => {
             alert('Submission Failed')

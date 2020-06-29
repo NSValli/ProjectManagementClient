@@ -20,10 +20,13 @@ export class ModalPopupComponent implements OnInit {
   hide() {
     this.showModal = false;
     if (this.navView === "User") {
-      this.router.navigate(["view-user"]);
+      this.router.navigate(["userview"]);
     }
     if (this.navView === "Task") {
-      this.router.navigate(["view-task"]);
+      this.router.navigate(["taskview"]);
+    }
+    if (this.navView === "Project") {
+      this.router.navigate(["projectview"]);
     }
   }
 

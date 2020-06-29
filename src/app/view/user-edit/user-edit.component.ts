@@ -16,7 +16,7 @@ export class UserEditComponent implements AfterContentInit {
 
   @ViewChild(ModalPopupComponent,{static:false}) modalPopup: ModalPopupComponent;
 
-  UpdateUserForm: FormGroup;
+  UserEditForm: FormGroup;
   submitted: boolean = false;
   userid: number;
   userList: User;
@@ -36,22 +36,22 @@ export class UserEditComponent implements AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    this.UpdateUserForm = this.formbuilder.group({
+    this.UserEditForm = this.formbuilder.group({
       FirstName: ['', Validators.required],
       LastName: ['', Validators.required],
       EmployeeID: ['', Validators.required]
     });
   }
 
-  get f() { return this.UpdateUserForm.controls; }
+  get f() { return this.UserEditForm.controls; }
 
   onSubmit() {
     this.submitted = true;
 
-    if (this.UpdateUserForm.invalid) {
+    if (this.UserEditForm.invalid) {
       return;
     }
-    this.service.UpdateUser(this.userid, this.UpdateUserForm.value)
+    this.service.UpdateUser(this.userid, this.UserEditForm.value)
       .pipe(first())
       .subscribe(
         data => {
